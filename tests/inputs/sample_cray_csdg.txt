@@ -1,0 +1,80 @@
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Vendor:               SEAGATE 
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Product:              ST4000NM0034    
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Revision:             E0G5
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,User Capacity:        4,000,787,030,016 bytes [4.00 TB]
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Logical block size:   512 bytes
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Logical Unit id:      0x5000c50083a74e7b
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Serial number:        Z4F04YLZ0000R0000000
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Device type:          disk
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Transport protocol:   SAS
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Local Time is:        Thu Feb  7 12:27:02 2019 PST
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Device supports SMART and is Enabled
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Temperature Warning Enabled
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,SMART Health Status: OK
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Current Drive Temperature:     31 C
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Drive Trip Temperature:        60 C
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Manufactured in week 20 of year 2015
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Specified cycle count over device lifetime:  10000
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Accumulated start-stop cycles:  53
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Specified load-unload count over device lifetime:  300000
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Accumulated load-unload cycles:  1484
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Elements in grown defect list: 0
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Vendor (Seagate) cache information
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,  Blocks sent to initiator = 3997291512
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,  Blocks received from initiator = 2212438632
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,  Blocks read from cache and sent to initiator = 1786920893
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,  Number of read and write commands whose size <= segment size = 203191884
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,  Number of read and write commands whose size > segment size = 6613
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Vendor (Seagate/Hitachi) factory information
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,  number of hours powered up = 30661.52
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,  number of minutes until next internal SMART test = 17
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Error counter log:
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,           Errors Corrected by           Total   Correction     Gigabytes    Total
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,               ECC          rereads/    errors   algorithm      processed    uncorrected
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,           fast | delayed   rewrites  corrected  invocations   [10^9 bytes]  errors
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,read:   157936665        0         0  157936665          0      80246.996           0
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,write:         0        0         0         0          0      19021.910           0
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Non-medium error count:        4
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,[GLTSD (Global Logging Target Save Disable) set. Enable Save with '-S on']
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,No self-tests have been logged
+snx11168n145: ,slot_0 ,/dev/sdbd ,SN_Z4F04YLZ0000R0000000 ,Long (extended) Self Test duration: 26454 seconds [440.9 minutes]
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Vendor:               SEAGATE 
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Product:              ST4000NM0034    
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Revision:             E0G5
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,User Capacity:        4,000,787,030,016 bytes [4.00 TB]
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Logical block size:   512 bytes
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Logical Unit id:      0x5000c50083a6e963
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Serial number:        Z4F05MV30000R541JGQ8
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Device type:          disk
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Transport protocol:   SAS
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Local Time is:        Thu Feb  7 12:27:03 2019 PST
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Device supports SMART and is Enabled
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Temperature Warning Enabled
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,SMART Health Status: OK
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Current Drive Temperature:     32 C
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Drive Trip Temperature:        60 C
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Manufactured in week 20 of year 2015
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Specified cycle count over device lifetime:  10000
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Accumulated start-stop cycles:  53
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Specified load-unload count over device lifetime:  300000
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Accumulated load-unload cycles:  1483
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Elements in grown defect list: 0
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Vendor (Seagate) cache information
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,  Blocks sent to initiator = 3913427088
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,  Blocks received from initiator = 3691995696
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,  Blocks read from cache and sent to initiator = 2563819844
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,  Number of read and write commands whose size <= segment size = 200944972
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,  Number of read and write commands whose size > segment size = 8311
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Vendor (Seagate/Hitachi) factory information
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,  number of hours powered up = 30661.25
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,  number of minutes until next internal SMART test = 56
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Error counter log:
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,           Errors Corrected by           Total   Correction     Gigabytes    Total
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,               ECC          rereads/    errors   algorithm      processed    uncorrected
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,           fast | delayed   rewrites  corrected  invocations   [10^9 bytes]  errors
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,read:   147173600        0         0  147173600          0      75736.621           0
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,write:         0        0         0         0          0      19791.268           0
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Non-medium error count:        1
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,[GLTSD (Global Logging Target Save Disable) set. Enable Save with '-S on']
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,No self-tests have been logged
+snx11168n145: ,slot_1 ,/dev/sdbb ,SN_Z4F05MV30000R0000000 ,Long (extended) Self Test duration: 26297 seconds [438.3 minutes]
