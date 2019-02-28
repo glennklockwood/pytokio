@@ -149,9 +149,11 @@ class Smartctl(dict):
                             self[serial_no] = {
                                 "slot": set([]),
                                 "dev": set([]),
+                                "nodenames": set([]),
                             }
                         self[serial_no]['slot'].add(slot)
                         self[serial_no]['dev'].add(dev)
+                        self[serial_no]['nodenames'].add(nodename)
                         for key, val in self.raw_values[nodename][slot][dev][serial_no].items():
                             new_key, new_val = self._scrub_kv(key, val)
                             self[serial_no][new_key] = new_val
