@@ -71,7 +71,7 @@ MMPERFMON_UNITS_TO_BYTES = {
 
 class Mmperfmon(SubprocessOutputDict):
     """
-    Representation for the mmperfmon query command.  Generates a dict of form
+    Representation for the mmperfmon query command.  Generates a dict of form::
 
         {
             timestamp0: {
