@@ -11,7 +11,7 @@ import tokio.connectors.hdf5
 
 
 def enumerate_h5lmts(fsname, datetime_start, datetime_end):
-    """Alias for enumerate_hdf5"""
+    """Alias for :meth:`tokio.connectors.hdf5.enumerate_hdf5`"""
     return enumerate_hdf5(fsname, datetime_start, datetime_end)
 
 def enumerate_hdf5(fsname, datetime_start, datetime_end):
@@ -31,8 +31,8 @@ def enumerate_hdf5(fsname, datetime_start, datetime_end):
 
     Returns:
         list: List of strings, each describing a path to an existing HDF5 file
-            that should contain data relevant to the requested start and end
-            dates.
+        that should contain data relevant to the requested start and end
+        dates.
     """
     return tokio.tools.common.enumerate_dated_files(start=datetime_start,
                                                     end=datetime_end,
