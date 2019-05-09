@@ -47,8 +47,7 @@ def enumerate_dated_files(start, end, template,
 
     Returns:
         list: List of strings, each describing a path to an existing HDF5 file
-            that should contain data relevant to the requested start and end
-            dates.
+        that should contain data relevant to the requested start and end dates.
     """
 
     if end < start:
@@ -86,8 +85,7 @@ def _expand_check_paths(template, lookup_key):
 
     Returns:
         list: List of strings, each describing a path to an existing HDF5 file
-            that should contain data relevant to the requested start and end
-            dates.
+        that should contain data relevant to the requested start and end dates.
     """
     check_paths = []
     if isinstance(template, dict):
@@ -117,8 +115,7 @@ def _match_files(check_paths, use_time, match_first):
 
     Returns:
         list: List of strings, each describing a path to an existing HDF5 file
-            that should contain data relevant to the requested start and end
-            dates.
+        that should contain data relevant to the requested start and end dates.
     """
 
     matching = []
