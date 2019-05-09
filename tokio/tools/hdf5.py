@@ -11,7 +11,7 @@ import tokio.connectors.hdf5
 
 
 def enumerate_h5lmts(fsname, datetime_start, datetime_end):
-    """Alias for :meth:`tokio.connectors.hdf5.enumerate_hdf5`"""
+    """Alias for :meth:`tokio.tools.hdf5.enumerate_hdf5`"""
     return enumerate_hdf5(fsname, datetime_start, datetime_end)
 
 def enumerate_hdf5(fsname, datetime_start, datetime_end):
