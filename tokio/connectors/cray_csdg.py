@@ -40,7 +40,7 @@ REMAP_KEYS = {
     },
     "local_time_is": {
         "k": lambda x: "timestamp",
-        "v": lambda x: datetime.datetime.strptime(x, "%a %b %d %H:%M:%S %Y PST"),
+        "v": lambda x: datetime.datetime.strptime(x.rsplit(None, 1)[0], "%a %b %d %H:%M:%S %Y"),
     },
     "accumulated_startstop_cycles": {
         "k": lambda x: "power_cycles",
@@ -62,7 +62,16 @@ REMAP_KEYS = {
     "long_(extended)_self_test_duration": {
         "k": lambda x: "extended_self_test_duration_secs",
         "v": lambda x: int(x.split()[0]),
-    }
+    },
+    "accumulated_loadunload_cycles": {
+        "v": lambda x: int(x),
+    },
+    "accumulated_startstop_cycles": {
+        "v": lambda x: int(x),
+    },
+    "blocks_sent_to_initiator": {
+        "v": lambda x: int(x),
+    },
 }
 
 for HEADER in HEADER_LINES:
@@ -114,7 +123,27 @@ class SmartctlParser():
 
         return found
 
+    def parse_scrub(self, line):
+        """Parse and convert a single line from smartctl
 
+        Loads a line, converts it to key-value pairs, and then applies the
+        key/value remapping to convert the key and/or value into a more logical
+        name and/or data type.
+
+        Args:
+            line (str): A single line from the output of smartctl
+
+        Returns:
+            dict: Any parsed key:value pairs extracted from the parsed line
+            after being converted
+        """
+        results = self.parse(line)
+        new_results = {}
+        for key, val in results.items():
+            new_key, new_val = _scrub_kv(key, val)
+            new_results[new_key] = new_val
+
+        return new_results
 
 class Smartctl(dict):
     """Loads the output of the smartctl_a component of CSDG
@@ -333,7 +362,7 @@ def _parse_toplevel_line(line):
     """
     found = {}
     keyvalue = line.split(':', 1)
-    if len(keyvalue) > 1:
+    if len(keyvalue) > 1 and (keyvalue[0][-4:] != "http" and keyvalue[1][:2] != "//"):
         found[_normalize_key(keyvalue[0])] = keyvalue[-1].strip()
     return found
 
