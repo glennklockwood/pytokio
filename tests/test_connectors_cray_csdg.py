@@ -33,16 +33,19 @@ def test_smartctl_parser(filenames=None):
         blah.append(this_file)
     print(json.dumps(blah, cls=JSONEncoder, indent=4, sort_keys=True))
 
-def main(argv=None):
-    parser = argparse.ArgumentParser()
-    parser.add_argument("filenames", nargs='+', type=str, help="ascii file(s) containing CSDG output")
-    parser.add_argument("-s", "--smartctl", action="store_true", help="expect bare smartctl output, not CSDG output")
-    args = parser.parse_args(argv)
-
-    if args.smartctl:
-        test_smartctl_parser(args.filenames)
-    else:
-        test_smartctl(args.filenames)
-
-if __name__ == "__main__":
-    main()
+#
+# from the original CLI test tool
+#
+# def main(argv=None):
+#     parser = argparse.ArgumentParser()
+#     parser.add_argument("filenames", nargs='+', type=str, help="ascii file(s) containing CSDG output")
+#     parser.add_argument("-s", "--smartctl", action="store_true", help="expect bare smartctl output, not CSDG output")
+#     args = parser.parse_args(argv)
+# 
+#     if args.smartctl:
+#         test_smartctl_parser(args.filenames)
+#     else:
+#         test_smartctl(args.filenames)
+# 
+# if __name__ == "__main__":
+#     main()
