@@ -175,33 +175,45 @@ def test_mapped_dataset():
     func.description = "connectors.hdf5 transpose mapping"
     yield func, tokiotest.SAMPLE_H5LMT_FILE
 
-def _test_mapped_dataset(input_file):
+def _test_mapped_dataset(input_file, datasets=None):
     """
     Load two views of the same data set (rates and bytes) and ensure that they
     are being correctly calculated.
     """
+    if datasets is None:
+        datasets = [
+            {
+                'rate': 'datatargets/readrates',
+                'tot': 'datatargets/readbytes', 
+            },
+            {
+                'rate': 'mdtargets/openrates',
+                'tot': 'mdtargets/opens', 
+            },
+        ]
     numpy.set_printoptions(formatter={'float': '{: 0.1f}'.format},
                            edgeitems=5,
                            linewidth=100)
     print("Testing %s" % input_file)
     hdf5_file = tokio.connectors.hdf5.Hdf5(input_file)
-    readbytes = hdf5_file['datatargets/readbytes']
-    readrates = hdf5_file['datatargets/readrates']
-    timestamps = hdf5_file.get_timestamps('datatargets/readbytes')[0:2]
-    timestep = timestamps[1] - timestamps[0]
+    for dataset_pair in datasets:
+        totals = hdf5_file[dataset_pair['tot']]
+        rates = hdf5_file[dataset_pair['rate']]
+        timestamps = hdf5_file.get_timestamps(dataset_pair['rate'])[0:2]
+        timestep = timestamps[1] - timestamps[0]
 
-    print("Timestep appears to be %s" % timestep)
-    print("readbytes is")
-    print(readbytes[:, :])
-    print()
-    print("readrates is")
-    print(readrates[:, :] * timestep)
-    print()
-    print("Are readrates a factor of %.2f away from readbytes?" % timestep)
+        print("Timestep appears to be %s" % timestep)
+        print(dataset_pair['tot'] + " is")
+        print(totals[:, :])
+        print()
+        print(dataset_pair['rate'] + " is")
+        print(rates[:, :] * timestep)
+        print()
+        print("Are rates a factor of %.2f away from totals?" % timestep)
 
-    equivalency = numpy.isclose(readrates[:, :] * timestep, readbytes[:, :])
-    print((readrates[:, :] * timestep) - readbytes[:, :])
-    assert equivalency.all()
+        equivalency = numpy.isclose(rates[:, :] * timestep, totals[:, :])
+        print(((rates[:, :] * timestep) - totals[:, :]).sum())
+        assert equivalency.all()
 
 def _test_transpose_mapping(input_file):
     """
@@ -263,6 +275,10 @@ def test_get_columns():
         func = _test_get_columns
         func.description = "connectors.hdf5.Hdf5.get_columns() with %s" % input_type
         yield func, input_file
+        func = _test_get_columns_missing
+        func.description = "connectors.hdf5.Hdf5.get_columns() with %s, /missing suffix" % input_type
+        yield func, input_file
+
 
 def _test_get_columns(input_file):
     """
@@ -271,6 +287,21 @@ def _test_get_columns(input_file):
     print("Testing %s" % input_file)
     hdf5_file = tokio.connectors.hdf5.Hdf5(input_file)
     for dataset_name in tokiotest.SAMPLE_TIMESERIES_DATASETS:
+        print("Getting %s from %s" % (dataset_name, hdf5_file.filename))
+        result = hdf5_file.get(dataset_name)
+        print('result: %s' % result)
+        assert result is not None
+        column_names = hdf5_file.get_columns(dataset_name)
+        assert len(column_names) > 0
+
+def _test_get_columns_missing(input_file):
+    """
+    Ensure that get_columns() works with /missing suffix
+    """
+    print("Testing %s" % input_file)
+    hdf5_file = tokio.connectors.hdf5.Hdf5(input_file)
+    for dataset_name in tokiotest.SAMPLE_TIMESERIES_DATASETS:
+        dataset_name += '/missing'
         print("Getting %s from %s" % (dataset_name, hdf5_file.filename))
         result = hdf5_file.get(dataset_name)
         print('result: %s' % result)
@@ -294,6 +325,10 @@ def test_get_timestamps():
         func = _test_get_columns
         func.description = "connectors.hdf5.Hdf5.get_timestamps() with %s" % input_type
         yield func, input_file
+        func = _test_get_columns
+        func.description = "connectors.hdf5.Hdf5.get_timestamps() with %s, /missing suffix" % input_type
+        yield func, input_file
+
 
 def _test_get_timestamps(input_file):
     """
@@ -302,6 +337,26 @@ def _test_get_timestamps(input_file):
     print("Testing %s" % input_file)
     hdf5_file = tokio.connectors.hdf5.Hdf5(input_file)
     for dataset_name in tokiotest.SAMPLE_TIMESERIES_DATASETS:
+        assert hdf5_file.get(dataset_name) is not None
+        timestamps = hdf5_file.get_timestamps(dataset_name)
+        assert len(timestamps[:]) > 0
+
+        # ensure that every timestamp is equidistant
+        prev_delta = None
+        for index in range(1, len(timestamps[:])):
+            delta = timestamps[index] - timestamps[index - 1]
+            if prev_delta is not None:
+                assert prev_delta == delta
+            prev_delta = delta
+
+def _test_get_timestamps_missing(input_file):
+    """
+    Ensure that get_timestamps() returns valid results with /missing suffix
+    """
+    print("Testing %s" % input_file)
+    hdf5_file = tokio.connectors.hdf5.Hdf5(input_file)
+    for dataset_name in tokiotest.SAMPLE_TIMESERIES_DATASETS:
+        dataset_name += '/missing'
         assert hdf5_file.get(dataset_name) is not None
         timestamps = hdf5_file.get_timestamps(dataset_name)
         assert len(timestamps[:]) > 0
