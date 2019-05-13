@@ -35,6 +35,9 @@ SAMPLE_TIMESTAMP_END_NOW = datetime.datetime.now().strftime(SAMPLE_TIMESTAMP_DAT
 SAMPLE_TIMESTAMP_START_NOW = (datetime.datetime.now() - datetime.timedelta(minutes=1))\
                             .strftime(SAMPLE_TIMESTAMP_DATE_FMT)
 
+################################################################################
+# connector: darshan
+################################################################################
 ### For tests that function without the Darshan log--these values must reflect
 ### the contents of SAMPLE_DARSHAN_LOG for the tests to actually pass
 SAMPLE_DARSHAN_LOG = os.path.join(INPUT_DIR, 'sample.darshan')
@@ -86,9 +89,11 @@ SAMPLE_DARSHAN_FQLOG_META = {
 SAMPLE_DARSHAN_LOG_NOPOSIX = os.path.join(INPUT_DIR, 'noposix.darshan') # lacks a POSIX module
 SAMPLE_DARSHAN_LOG_NOPOSIXOPENS = os.path.join(INPUT_DIR, 'noposix.darshan') # only posix op was a stat
 
-### For lfsstatus connector/tool.  These values must reflect the contents of
-### SAMPLE_OSTMAP_FILE and SAMPLE_OSTFULLNESS_FILE for the tests to actually
-### pass.
+################################################################################
+# connector: lfshealth
+################################################################################
+# These values must reflect the contents of SAMPLE_OSTMAP_FILE and
+# SAMPLE_OSTFULLNESS_FILE for the tests to pass.
 SAMPLE_LCTL_DL_T_FILE = os.path.join(INPUT_DIR, 'lctl-dl-t.txt.gz')
 SAMPLE_LFS_DF_FILE = os.path.join(INPUT_DIR, 'lfs-df.txt.gz')
 SAMPLE_OSTMAP_FILE = os.path.join(INPUT_DIR, 'sample_ost-map.txt.gz')
@@ -99,13 +104,26 @@ SAMPLE_OSTMAP_OST_PER_OSS = 1
 SAMPLE_OSTFULLNESS_FILE = os.path.join(INPUT_DIR, 'sample_ost-fullness.txt.gz')
 SAMPLE_OSTFULLNESS_START = 1489998203
 SAMPLE_OSTFULLNESS_END = 1490081107
+
+################################################################################
+# connector: hpss
+################################################################################
 SAMPLE_HPSS_REPORT = os.path.join(INPUT_DIR, "hpss_daily.txt")
 
-### Other cached files corresponding to SAMPLE_DARSHAN_LOG
+################################################################################
+# connector: nersc_jobsdb
+################################################################################
+# Following cached files should correspond to SAMPLE_DARSHAN_LOG for
+# test_cli_summarize_job to pass
 SAMPLE_NERSCJOBSDB_FILE = os.path.join(INPUT_DIR, 'sample_nersc_jobsdb.sqlite3')
 SAMPLE_NERSCJOBSDB_START = 1489872299
 SAMPLE_NERSCJOBSDB_END = 1490167256
 SAMPLE_NERSCJOBSDB_HOST = 'edison'
+
+################################################################################
+# connector: lmtdb
+# cli: archive_lmtdb
+################################################################################
 SAMPLE_LMTDB_FILE = os.path.join(INPUT_DIR, 'snx11025_2018-01-28.sqlite3')
 SAMPLE_LMTDB_H5LMT = os.path.join(INPUT_DIR, 'snx11025_2018-01-28.h5lmt')
 SAMPLE_LMTDB_TTS_HDF5 = os.path.join(INPUT_DIR, 'snx11025_2018-01-28.hdf5')
@@ -118,10 +136,17 @@ SAMPLE_LMTDB_MAX_INDEX = 60
 SAMPLE_LMTDB_NONMONO = os.path.join(INPUT_DIR, 'lmtdb-reset.sqlite3')
 SAMPLE_LMTDB_NONMONO_START_STAMP = "2018-04-18T00:00:00"
 SAMPLE_LMTDB_NONMONO_END_STAMP = "2018-04-19T00:00:00"
+
+################################################################################
+# connector: cray_sdb
+################################################################################
 SAMPLE_XTDB2PROC_FILE = os.path.join(INPUT_DIR, 'sample.xtdb2proc.gz')
+
+################################################################################
+# connector: hdf5
+################################################################################
 SAMPLE_H5LMT_FILE = os.path.join(INPUT_DIR, 'sample.h5lmt')
 SAMPLE_VERSIONS_HDF5 = os.path.join(INPUT_DIR, 'versions_test.hdf5')
-SAMPLE_H5LMT_DATES = ['2017-03-20', '2017-03-21']
 SAMPLE_TOKIOTS_FILE = os.path.join(INPUT_DIR, 'sample_tokiots.hdf5')
 SAMPLE_TIMESERIES_FILES = {
 #   "TOKIO collectdes HDF5": SAMPLE_TOKIOTS_FILE,
@@ -145,15 +170,25 @@ TIMESERIES_DATASETS_MOST = [
     '/mdtargets/closes',
 ]
 
+################################################################################
+# tool: hdf5
+################################################################################
+SAMPLE_H5LMT_DATES = ['2017-03-20', '2017-03-21']
 
-### The following SLURM_CACHE_* all correspond to SLURM_CACHE_FILE; if you
-### change one, you must change them all.
+################################################################################
+# connector: slurm
+################################################################################
+# The following SLURM_CACHE_* all correspond to SLURM_CACHE_FILE; if you
+# change one, you must change them all.
 SAMPLE_SLURM_CACHE_FILE = os.path.join(INPUT_DIR, 'sample.slurm')
 SAMPLE_SLURM_CACHE_KEYS = ['start', 'end', 'jobidraw']
 SAMPLE_SLURM_CACHE_JOBCT = 1
 SAMPLE_SLURM_CACHE_NODECT = 128
 SAMPLE_SLURM_CACHE_MAX_WALLSECS = 3600
 
+################################################################################
+# connector: nersc_isdct
+################################################################################
 SAMPLE_NERSCISDCT_FILE = os.path.join(INPUT_DIR, 'sample_nersc_isdct.tgz')
 # SAMPLE_NERSCISDCT_PREV_FILE is used to verify the .diff() method.  It should
 # be sufficiently different from SAMPLE_NERSCISDCT_FILE to exercise .diff()'s
@@ -172,6 +207,9 @@ SAMPLE_NERSCISDCT_DIFF_MONOTONICS = [ # counters whose values should be bigger t
 SAMPLE_NERSCISDCT_DIFF_ZEROS = ['physical_size'] # diff should always be numeric zero
 SAMPLE_NERSCISDCT_DIFF_EMPTYSTR = ['model_number'] # diff should always be an empty string
 
+################################################################################
+# connector: es and collectdes
+################################################################################
 SAMPLE_COLLECTDES_FILE = os.path.join(INPUT_DIR, 'sample_collectdes-full.json.gz')
 SAMPLE_COLLECTDES_NUMNODES = 288
 SAMPLE_COLLECTDES_SSDS_PER = 4
@@ -191,7 +229,6 @@ SAMPLE_COLLECTDES_DSET = '/datatargets/readrates'
 SAMPLE_COLLECTDES_DSET2 = '/datatargets/writerates'
 
 SAMPLE_COLLECTDES_INDEX = 'gerty-collectd-*' # this test will ONLY work at NERSC
-SAMPLE_GLOBUSLOGS_INDEX = 'dtn-dtn-log*' # this test will ONLY work at NERSC
 SAMPLE_COLLECTDES_HOST = 'localhost'
 SAMPLE_COLLECTDES_PORT = 9200
 SAMPLE_COLLECTDES_QUERY = {
@@ -212,10 +249,17 @@ SAMPLE_COLLECTDES_QUERY = {
     },
 }
 
+################################################################################
+# connector: nersc_globuslogs
+################################################################################
 SAMPLE_GLOBUSLOGS = os.path.join(INPUT_DIR, 'globuslogs.json.gz')
+SAMPLE_GLOBUSLOGS_INDEX = 'dtn-dtn-log*' # this test will ONLY work at NERSC
 SAMPLE_GLOBUSLOGS_USERS = ['fusera', 'useroll']
 SAMPLE_GLOBUSLOGS_TYPES = ['STOR', 'RETR']
 
+################################################################################
+# connector: esnet_snmp
+################################################################################
 SAMPLE_ESNET_SNMP_FILE = os.path.join(INPUT_DIR, 'esnet_snmp.json.gz')
 SAMPLE_ESNET_SNMP_START = "2019-02-11T00:00:00"
 SAMPLE_ESNET_SNMP_END = "2019-02-11T23:59:59"
@@ -224,6 +268,9 @@ SAMPLE_ESNET_SNMP_FILE2 = os.path.join(INPUT_DIR, 'esnet_snmp-2.json.gz')
 SAMPLE_ESNET_SNMP_START2 = "2019-02-11T01:01:00"
 SAMPLE_ESNET_SNMP_END2 = "2019-02-11T01:04:00"
 
+################################################################################
+# connector: mmperfmon
+################################################################################
 SAMPLE_MMPERFMON_USAGE_INPUT = os.path.join(INPUT_DIR, 'mmperfmon-usage.txt.gz')
 SAMPLE_MMPERFMON_NUMOPS_INPUT = os.path.join(INPUT_DIR, 'mmperfmon-gpfsNumberOperations.txt.gz')
 SAMPLE_MMPERFMON_TGZ_INPUT = os.path.join(INPUT_DIR, 'mmperfmon.tgz')
@@ -231,6 +278,12 @@ SAMPLE_MMPERFMON_TAR_INPUT = os.path.join(INPUT_DIR, 'mmperfmon.tar')
 SAMPLE_MMPERFMON_UNPACKED_INPUT = os.path.join(INPUT_DIR, 'mmperfmon_dir')
 SAMPLE_MMPERFMON_METRICS = ['cpu_user', 'cpu_sys', 'mem_free', 'mem_total']
 SAMPLE_MMPERFMON_HOSTS = ['ngfsv468.nersc.gov']
+
+################################################################################
+# connector: cray_csdg
+################################################################################
+SAMPLE_SMARTCTL_A = os.path.join(INPUT_DIR, "sample_smartctl_a.txt")
+SAMPLE_SMARTCTL = os.path.join(INPUT_DIR, "sample_smartctl.txt")
 
 class CaptureOutputs(object):
     """Context manager to capture stdout/stderr
