@@ -18,6 +18,14 @@ def test_smartctl(filenames=None):
         blah.load_file(filename)
     print(blah.to_json(indent=4, sort_keys=True))
 
+def test_smartctl_from_file(filenames=None):
+    """tokio.connectors.cray_csdg.Smartctl.from_file"""
+    if filenames is None:
+        filenames = [tokiotest.SAMPLE_SMARTCTL_A]
+
+    blah = tokio.connectors.cray_csdg.Smartctl.from_file(filenames[0])
+    print(blah.to_json(indent=4, sort_keys=True))
+
 def test_smartctl_parser(filenames=None):
     """tokio.connectors.cray_csdg.SmartctlParser"""
     if filenames is None:
