@@ -131,17 +131,6 @@ def test_multithreaded():
 
 @tokiotest.needs_darshan
 @nose.tools.with_setup(tokiotest.create_tempfile, tokiotest.delete_tempfile)
-def test_max_mb():
-    """cli.index_darshanlogs, lite parser
-    """
-    tokiotest.check_darshan()
-    argv = ['--max-mb', str(1.0/1024.0), '--output', tokiotest.TEMP_FILE.name] + SAMPLE_DARSHAN_LOGS
-    print("Executing: %s" % " ".join(argv))
-    tokiotest.run_bin(tokio.cli.index_darshanlogs, argv)
-    verify_index_db(tokiotest.TEMP_FILE.name)
-
-@tokiotest.needs_darshan
-@nose.tools.with_setup(tokiotest.create_tempfile, tokiotest.delete_tempfile)
 def test_no_bulk_insert():
     """cli.index_darshanlogs --no-bulk-insert
     """
@@ -188,49 +177,6 @@ def test_no_bulk_insert():
     print("Executing: %s" % " ".join(argv))
     tokiotest.run_bin(tokio.cli.index_darshanlogs, argv)
     rows_test = verify_index_db(tokiotest.TEMP_FILE.name)
-
-@tokiotest.needs_darshan
-def test_lite_vs_full():
-    """cli.index_darshanlogs, lite/full parser equivalence
-    """
-    tokiotest.check_darshan()
-    for darshan_log in SAMPLE_DARSHAN_LOGS:
-        print("Attempting " + darshan_log)
-        dict1 = tokio.cli.index_darshanlogs.summarize_by_fs(darshan_log)
-        dict2 = tokio.cli.index_darshanlogs.summarize_by_fs_lite(darshan_log)
-        print("=== Full ===")
-        print(json.dumps(dict1, indent=4, sort_keys=True))
-        print("=== Lite ===")
-        print(json.dumps(dict2, indent=4, sort_keys=True))
-
-        # assert dict1 == dict2
-        for table in 'headers', 'mounts':
-            print("Comparing table '%s'; len full(%d) vs lite(%d)" % (table, len(dict1[table]), len(dict2[table])))
-            assert len(dict1[table]) == len(dict2[table])
-            for key, val in dict1[table].items():
-                print("%s->key[%s]: lite(%s) == full(%s)?" % (
-                    table,
-                    key,
-                    dict2[table].get(key),
-                    val))
-                assert dict2[table].get(key) == val
-
-        assert len(dict1['summaries']) == len(dict2['summaries'])
-        for mount in dict1['summaries']:
-            assert mount in dict2['summaries']
-            for key, val in dict1['summaries'][mount].items():
-                if key in ('posix_files', 'stdio_files', 'f_close_end_timestamp', 'f_open_end_timestamp'):
-                    # darshan2 cannot distinguish stdio records from posix records
-                    # darshan2 also does not have equivalent start timestamps
-                    continue
-                print("summaries->%s->key[%s]: lite(%s) == full(%s)?" % (mount, key, dict2['summaries'][mount].get(key), val))
-                if dict2['summaries'][mount].get(key) != val:
-                    print("=== Full ===")
-                    print(json.dumps(dict1['summaries'][mount], indent=4, sort_keys=True))
-                    print("=== Lite ===")
-                    print(json.dumps(dict2['summaries'][mount], indent=4, sort_keys=True))
-                assert dict2['summaries'][mount].get(key) == val
-
 
 @tokiotest.needs_darshan
 def test_get_file_mount():
